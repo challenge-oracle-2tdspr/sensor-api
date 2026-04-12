@@ -14,9 +14,7 @@ RUN mkdir -p target/extracted && java -Djarmode=layertools -jar target/*.jar ext
 
 FROM eclipse-temurin:21-jre-alpine
 
-LABEL maintainer="sensor-team"
-      description="Sensor API - Spring Boot Production"
-      version="1.0"
+LABEL maintainer="sensor-team" description="Sensor API - Spring Boot Production" version="1.0"
 
 RUN apk update --no-cache && apk upgrade --no-cache && apk add --no-cache curl wget ca-certificates tzdata && rm -rf /var/cache/apk/*
 
@@ -36,10 +34,7 @@ RUN chown -R sensor:sensor /opt/sensor &&     chmod 500 /opt/sensor
 
 USER sensor
 
-HEALTHCHECK --interval=30s
-            --timeout=3s
-            --start-period=60s
-            --retries=3
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3
 
 CMD wget --quiet --tries=1 --spider http://localhost:${SERVER_PORT:-8081}/actuator/health || exit 1
 
