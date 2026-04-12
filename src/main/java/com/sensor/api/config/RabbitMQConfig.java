@@ -47,11 +47,4 @@ public class RabbitMQConfig {
         return template;
     }
 
-    @Bean
-    public ApplicationRunner rabbitConnectionCheck(RabbitTemplate rabbitTemplate) {
-        return args -> rabbitTemplate.execute(channel -> {
-            log.info("RabbitMQ connected: {}", channel.getConnection().getAddress());
-            return null;
-        });
-    }
 }
