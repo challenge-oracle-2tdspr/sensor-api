@@ -34,9 +34,7 @@ RUN chown -R sensor:sensor /opt/sensor &&     chmod 500 /opt/sensor
 
 USER sensor
 
-HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3
-
-CMD wget --quiet --tries=1 --spider http://localhost:${SERVER_PORT:-8081}/actuator/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 CMD wget --quiet --tries=1 --spider http://localhost:${SERVER_PORT:-8081}/actuator/health || exit 1
 
 EXPOSE 8081
 
