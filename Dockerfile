@@ -38,14 +38,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 CMD wget 
 
 EXPOSE 8081
 
-ENTRYPOINT ["java",
-            "-XX:InitialRAMPercentage=70",
-            "-XX:MaxRAMPercentage=70",
-            "-XX:+UseG1GC",
-            "-XX:+UseStringDeduplication",
-            "-XX:+OptimizeStringConcat",
-            "-Djava.security.egd=file:/dev/./urandom",
-            "-Dspring.profiles.active=prod",
-            "-cp",
-            "BOOT-INF/classes:BOOT-INF/lib/*",
-            "org.springframework.boot.loader.launch.JarLauncher"]
+ENTRYPOINT ["java", "-XX:InitialRAMPercentage=70", "-XX:MaxRAMPercentage=70", "-XX:+UseG1GC", "-XX:+UseStringDeduplication", "-XX:+OptimizeStringConcat", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=prod", "-cp", "BOOT-INF/classes:BOOT-INF/lib/*", "org.springframework.boot.loader.launch.JarLauncher"]
