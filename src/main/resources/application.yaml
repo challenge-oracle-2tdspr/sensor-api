@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: sensor-api
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/sensor_db}
+    username: ${SPRING_DATASOURCE_USERNAME:sensor_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:sensor_pass}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:sensor_user}
+    password: ${SPRING_RABBITMQ_PASSWORD:sensor_pass}
+    virtual-host: ${SPRING_RABBITMQ_VIRTUAL_HOST:sensor_vhost}
+    connection-timeout: 5000
+
+server:
+  port: ${SERVER_PORT:8081}
