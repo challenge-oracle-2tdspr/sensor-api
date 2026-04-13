@@ -24,7 +24,7 @@ services:
     container_name: sensor-api
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-sensor_db}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-sensor_user}
